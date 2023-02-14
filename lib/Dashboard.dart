@@ -19,7 +19,7 @@ class MyDashBoard extends StatefulWidget{
 
 class _MyDashBoardState extends State<MyDashBoard> {
 
-  late SharedPreferences logindata;
+  late SharedPreferences registerData;
   late String username;
 
   @override
@@ -28,9 +28,9 @@ class _MyDashBoardState extends State<MyDashBoard> {
     initial();
   }
   void initial()async{
-    logindata=await SharedPreferences.getInstance();
+    registerData=await SharedPreferences.getInstance();
     setState(() {
-      username=logindata.getString('username')!;
+      username=registerData.getString('username')!;
     });
   }
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _MyDashBoardState extends State<MyDashBoard> {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                     onPressed: (){
-                      logindata.setBool('newuser', true);
+                      registerData.setBool('newuser', true);
                       Navigator.pushReplacement(context, new MaterialPageRoute(builder: (context)=>MyApp()));
                     },
                     child: Text("LogOut")),
